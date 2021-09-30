@@ -1,12 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeaderNavigation = styled.nav`
   .navigationList {
     list-style: none;
     display: flex;
-  }
-  .navigationListItem:not(:last-child) {
-    margin-right: 20px;
+    flex-direction: column;
+    justify-content: center;
   }
   .navigationListItemAnchor {
     text-decoration: none;
@@ -14,6 +13,16 @@ export const HeaderNavigation = styled.nav`
     text-transform: uppercase;
     &:hover {
       color: #5f73a1;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .navigationList {
+      flex-direction: row;
+    }
+
+    .navigationListItem:not(:last-child) {
+      margin-right: 20px;
     }
   }
 `;
