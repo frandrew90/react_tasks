@@ -1,5 +1,5 @@
-import React from "react";
-import { ColorItemLI, ListItemContainer } from "./PhoneListItemStyled";
+import React from 'react';
+import { ListItemContainer } from './PhoneListItemStyled';
 
 const PhoneListItem = ({ phone, addToCart }) => {
   const addProduct = () => {
@@ -7,10 +7,10 @@ const PhoneListItem = ({ phone, addToCart }) => {
   };
   return (
     <ListItemContainer>
-      <div className='content'>
-        <h3 className='listItemTitle'>{phone.name}</h3>
-        <div className='imageWrapper'>
-          <img src={phone.image} alt={phone.name} className='listItemImage' />
+      <div className="content">
+        <h3 className="listItemTitle">{phone.name}</h3>
+        <div className="imageWrapper">
+          <img src={phone.image} alt={phone.name} className="listItemImage" />
         </div>
 
         {/* <ul className='colorsList'>
@@ -18,18 +18,18 @@ const PhoneListItem = ({ phone, addToCart }) => {
             <ColorItemLI key={color} color={color} />
           ))}
         </ul> */}
-        <p className='priceTitle'>
+        <p className="priceTitle">
           {phone.isSale ? (
             <>
-              <span className='withSalePrice'> {phone.price}</span>{" "}
-              <span className='withoutSalePrice'>
+              <span className="withSalePrice"> {phone.price}</span>{' '}
+              <span className="withoutSalePrice">
                 {(phone.price - phone.price / 10).toFixed(0)}
               </span>
             </>
           ) : (
-            <span className='withoutSalePrice'>{phone.price}</span>
+            <span className="withoutSalePrice">{phone.price}</span>
           )}
-          {" грн"}
+          {' грн'}
         </p>
         <button onClick={addProduct}>Добавить в корзину</button>
       </div>

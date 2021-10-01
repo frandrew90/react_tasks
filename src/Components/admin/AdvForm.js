@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { AdvFormContainer } from "./AdvFormStyled";
-import { v4 as uuidv4 } from "uuid";
+import React, { Component } from 'react';
+import { AdvFormContainer } from './AdvFormStyled';
+import { v4 as uuidv4 } from 'uuid';
 
-const productCategories = ["phones", "laptops"];
+const productCategories = ['phones', 'laptops'];
 
 const initialState = {
   category: productCategories[0],
-  name: "",
-  image: "",
-  description: "",
+  name: '',
+  image: '',
+  description: '',
   price: 0,
   isSale: false,
 };
@@ -18,42 +18,35 @@ class AdvForm extends Component {
     ...initialState,
   };
 
-  onHandleChange = (e) => {
+  onHandleChange = e => {
     const { name, value, type, checked } = e.target;
-    if (type === "checkbox") {
+    if (type === 'checkbox') {
       this.setState({ [name]: checked });
       return;
     }
     this.setState({ [name]: value });
   };
-  onHandleSubmit = (e) => {
+  onHandleSubmit = e => {
     e.preventDefault();
-    const { category, name, image, description, price, isSale } = this.state;
-    this.props.addNewAdv(category, {
-      name,
-      image,
-      description,
-      price: Number(price),
-      isSale,
-      id: uuidv4(),
-    });
+
+    this.props.addNewAdv({ ...this.state, price: Number(this.state.price) });
     this.setState({ ...initialState });
   };
   render() {
     return (
       <AdvFormContainer>
-        <form onSubmit={this.onHandleSubmit} className='advForm'>
-          <div className='advFormContent'>
-            <div className='leftColumn'>
-              
-              <label className='advFormLabel'>
+        <form onSubmit={this.onHandleSubmit} className="advForm">
+          <div className="advFormContent">
+            <div className="leftColumn">
+              <label className="advFormLabel">
                 Категория
                 <select
                   value={this.state.category}
-                  name='category'
-                  className='advFormInput'
-                  onChange={this.onHandleChange}>
-                  {productCategories.map((category) => (
+                  name="category"
+                  className="advFormInput"
+                  onChange={this.onHandleChange}
+                >
+                  {productCategories.map(category => (
                     <option value={category} key={category}>
                       {category}
                     </option>
@@ -61,63 +54,61 @@ class AdvForm extends Component {
                 </select>
               </label>
 
-
-
-              <label className='advFormLabel'>
+              <label className="advFormLabel">
                 Название продукта
                 <input
-                  type='text'
-                  name='name'
+                  type="text"
+                  name="name"
                   value={this.state.name}
-                  className='advFormInput'
+                  className="advFormInput"
                   onChange={this.onHandleChange}
                 />
               </label>
-              <label className='advFormLabel'>
+              <label className="advFormLabel">
                 Изображение
                 <input
-                  type='text'
-                  name='image'
+                  type="text"
+                  name="image"
                   value={this.state.image}
-                  className='advFormInput'
+                  className="advFormInput"
                   onChange={this.onHandleChange}
                 />
               </label>
             </div>
-            <div className='rightColumn'>
-              <label className='advFormLabel'>
+            <div className="rightColumn">
+              <label className="advFormLabel">
                 Описание
                 <input
-                  type='text'
-                  name='description'
+                  type="text"
+                  name="description"
                   value={this.state.description}
-                  className='advFormInput'
+                  className="advFormInput"
                   onChange={this.onHandleChange}
                 />
               </label>
-              <label className='advFormLabel'>
+              <label className="advFormLabel">
                 Цена
                 <input
-                  type='text'
-                  name='price'
+                  type="text"
+                  name="price"
                   value={this.state.price}
-                  className='advFormInput'
+                  className="advFormInput"
                   onChange={this.onHandleChange}
                 />
               </label>
-              <label className='advFormLabelCheckBox'>
+              <label className="advFormLabelCheckBox">
                 Учавствует в распродаже
                 <input
-                  type='checkbox'
-                  name='isSale'
+                  type="checkbox"
+                  name="isSale"
                   checked={this.state.isSale}
-                  className='advFormCheckBox'
+                  className="advFormCheckBox"
                   onChange={this.onHandleChange}
                 />
               </label>
             </div>
           </div>
-          <button type='submit' className='submitButton'>
+          <button type="submit" className="submitButton">
             Добавить продукт
           </button>
         </form>
@@ -128,7 +119,9 @@ class AdvForm extends Component {
 
 export default AdvForm;
 
-
-const arr = [[100,200], [300, 500]];
-const [,[,y2]] = arr 
+const arr = [
+  [100, 200],
+  [300, 500],
+];
+const [, [, y2]] = arr;
 console.log(y2);
